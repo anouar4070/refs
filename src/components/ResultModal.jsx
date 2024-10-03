@@ -21,7 +21,7 @@ const ResultModel = forwardRef(function ResultModel(
   });
 
   return (
-    <dialog ref={dialog} className="result-modal">
+    <dialog ref={dialog} className="result-modal" onClose={onReset}>
       {userLost && <h2>You lost</h2>}
       {!userLost && <h2>You Score: {score}</h2>}
       <p>
@@ -38,3 +38,7 @@ const ResultModel = forwardRef(function ResultModel(
 });
 
 export default ResultModel;
+
+/**
+ * To make sure that onReset gets triggered when the dialog is closed via the escape key (ESC), you should add the built-in onClose prop to the <dialog> element and bind it to the onReset prop value.
+ */
